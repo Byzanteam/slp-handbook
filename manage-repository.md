@@ -11,7 +11,13 @@
 - Repository
   - 仓库名称 ✅
   - 简单的仓库描述 ✅
-  - 打上对应的标签如：slp, slp-frontend 等 ✅
+  - <details>
+      <summary>打上对应的 <code>topic</code> 如：<code>slp</code>（<b>必填</b>）, <code>slp-frontend</code> 等 ✅</summary>
+      <ul>
+        <li><code>slp</code> 是 Skylark 团队相关项目必填 </li>
+      </ul>
+      <img src="./misc/github_repository_detauls.png"/>
+    </details>
 - README.md
   - 相关文档
   - 客户信息（如果没有可忽略）
