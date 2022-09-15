@@ -8,16 +8,18 @@
 - 代码只有经过 **review** 后才可以合并到 `develop` 和 `main` 分支
 
 #### 基础设置
-- 仓库名称 ✅
-- 简单的仓库描述 ✅
-- 相关文档
-- 客户信息（如果没有可忽略）
-- 打上对应的标签如：slp, slp-frontend 等 ✅
+- Repository
+  - 仓库名称 ✅
+  - 简单的仓库描述 ✅
+  - 打上对应的标签如：slp, slp-frontend 等 ✅
+- README.md
+  - 相关文档
+  - 客户信息（如果没有可忽略）
 
 #### 权限
 ##### 给对应团队的权限 ✅
  - `admin`: slp-admin（固定）
- - `write`: 当前仓库的开发者所在的团队（如：slp-frontend）
+ - `write`: 当前仓库的开发者所在的团队或个人（如：slp-frontend）
  - `read`: slp-test
  - [团队信息参考](https://github.com/orgs/Byzanteam/teams)
  - <details>
@@ -29,7 +31,7 @@
  - General
    - Features
      - <details>
-        <summary>中只保留 <code>issues</code></summary>
+        <summary>只保留 <code>issues</code></summary>
         <img src="./misc/github_general_features.png"/>
        </details>
    - Pull Requests
