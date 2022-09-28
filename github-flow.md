@@ -22,7 +22,7 @@
 - `main` 分支作为线上运行的版本，目前用单独的一个 `pr` 更新 `version`
 
 ### Commit 格式
-- 参考 [Handbook](https://github.com/Byzanteam/handbook/edit/master/github-flow.md)
+- 参考 [Handbook](https://github.com/Byzanteam/handbook/blob/master/github-flow.md)
 
 ### Pull Request 格式
 - 以 「飞书」 对应的 `card` 的 `title` 作为标题
