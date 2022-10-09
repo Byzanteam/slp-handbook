@@ -26,7 +26,7 @@
 ##### 给对应团队的权限 ✅
  - `admin`: slp-admin（固定）
  - `write`: 当前仓库的开发者所在的团队或个人（如：slp-frontend）
- - `read`: slp-test
+ - `write`: slp-test
  - [团队信息参考](https://github.com/orgs/Byzanteam/teams)
  - <details>
     <summary>示例</summary>
