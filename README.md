@@ -7,3 +7,4 @@
 
 - [仓库的管理](https://github.com/Byzanteam/slp-handbook/blob/main/manage-repository.md)
 - [Github flow](https://github.com/Byzanteam/slp-handbook/blob/main/github-flow.md)
+- [Growth And Assessment](https://github.com/Byzanteam/slp-handbook/blob/main/growth-and-assessment.md)
