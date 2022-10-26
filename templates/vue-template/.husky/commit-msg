@@ -1,0 +1,1 @@
+pnpm run commitlint -e $GIT_PARAMS
