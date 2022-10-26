@@ -1,0 +1,60 @@
+name: Preview PR on Netlify
+
+on:
+  pull_request:
+    types:
+      - labeled
+      - synchronize
+      - opened
+      - ready_for_review
+      - reopened
+
+jobs:
+  preview:
+    if: contains(github.event.pull_request.labels.*.name, 'run-ci')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@main
+      - uses: actions/setup-node@main
+        with:
+          node-version: 16
+          registry-url: https://registry.npmjs.org/
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7.1.0
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        run: echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
+      - uses: actions/cache@v3
+        id: use-pnpm-cache # use this to check for `cache-hit` (`steps.pnpm-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.pnpm-cache.outputs.pnpm_cache_dir }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: ${{ runner.os }}-pnpm-
+
+      - run: pnpm install
+      - run: pnpm run build
+
+      - name: Make netlify config file
+        working-directory: ./
+        run: cp .netlify.toml ./dist/netlify.toml
+
+      - name: Convert branch name to site name
+        id: set-site-name
+        run: echo "::set-output name=name::$(echo ${{ github.event.pull_request.head.ref }} | awk -F '/' '{ print $NF }')"
+
+      - name: Deploy to Netlify
+        uses: byzanteam/jet-actions/branch-preview@master
+        with:
+          netlify-auth: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          netlify-dir: ./dist/
+          netlify-site-name: ${{ steps.set-site-name.outputs.name }}
+          netlify-account-slug: jet-hive-admin
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/upload-artifact@main
+        if: failure()
+        with:
+          name: workspace
+          path: ./dist/
